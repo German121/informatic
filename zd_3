@@ -1,0 +1,17 @@
+#include <cmath>
+#include <iostream>
+#include <locale>
+using namespace std;
+int main() {
+    setlocale(LC_ALL,"Russian");
+    int z;
+    cin >> z;
+    float end = sqrt((float)z);
+    for (int k=2; k <= end; ++k) {
+        if (z%k == 0) {
+            cout << "Не простое" << endl;
+            return 0;
+        }
+    }
+    cout << "Простое" << endl;
+}

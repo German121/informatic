@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int factorial(int M)
+{
+	int H = 1;
+
+	for(int p=1; i<=M; ++p)
+	{
+		H *= p;
+	}
+	return H;
+}
+int main()
+{
+	int M;
+	cout << "M = ";
+	cin >> M;
+
+	if(M >= 0)
+	{
+		cout << factorial(M);
+	}
+	else
+	{
+		cout << "Error: M < 0.";
+	}
+	return 0;
+}
