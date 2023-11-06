@@ -1,0 +1,9 @@
+num = int(input('Введите число для проверки его на простоту')) 
+k = 0
+for i in range(2, int(num ** 0.5) + 1):
+    if num % i == 0:
+        k += 1
+        print(f'Число {num} не простое')
+        break
+if k == 0:
+    print(f'Число {num} простое')

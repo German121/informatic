@@ -1,0 +1,2 @@
+stroka = input('Введите строку:')
+print(f"Кол-во гласных в строке: {sum([1 for i in stroka if i in 'АЕЁИОУЫЭЮЯ' or i in 'аеёиоуыэюя}'])}")
