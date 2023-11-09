@@ -1,0 +1,11 @@
+element = []
+let = 1
+print('Введите элементы. Для конца - "0"')
+while let != 0:
+    let = int(input('Введите элемент: ').strip())
+    element.append(let)
+    print(element)
+n = int(input('Сколько вы хотите убрать элементов: '))
+for i in range(n):
+    print(element.pop())
+print("Конечный стек:", element)
