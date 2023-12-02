@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+class Product {
+protected:
+    double price;
+    double weight;
+
+public:
+    Product(double price, double weight) {
+        if (price <= 0 || weight <= 0) {
+            throw std::invalid_argument("Неккоректная цена  или вес.");
+        }
+        this->price = price;
+        this->weight = weight;
+    }
+
+    double getTotalPrice() {
+        return price * weight;
+    }
+};
+
+class Apple : public Product {
+private:
+    std::string variety;
+
+public:
+    Apple(double price, double weight, std::string variety) : Product(price, weight) {
+        this->variety = variety;
+    }
+
+    std::string getVariety() {
+        return variety;
+    }
+};
+
+class Orange : public Product {
+private:
+    std::string origin;
+
+public:
+    Orange(double price, double weight, std::string origin) : Product(price, weight) {
+        this->origin = origin;
+    }
+
+    std::string getOrigin() {
+        return origin;
+    }
+};
+
+int main() {
+    try {
+        Apple apple(110, 1.5, "Гренни");
+        std::cout << "Сорт яблока: " <<   apple.getVariety() << std::endl;
+        std::cout << "Итоговая цена за яблоки: " << apple.getTotalPrice() << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Ошибка при создании яблока: " << e.what() << std::endl;
+    }
+
+    try {
+        Orange orange(80, -2.5, "Бразилия");
+        std::cout << "Страна происхождения апельсина: " << orange.getOrigin() << std::endl;
+        std::cout << "Итоговая цена за апельсины: " << orange.getTotalPrice() << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Ошибка при создании апельсина: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+
+/*Сорт яблока: Гренни
+Итоговая цена за яблоки: 165
+Ошибка при создании апельсина: Неккоректная цена  или вес.
