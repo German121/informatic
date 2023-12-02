@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class dom {
+private:
+    int komnats;
+    string adres;
+
+public:
+    dom(int rooms, string addr) : komnats(rooms), adres(addr) {}
+
+    void Info() {
+        cout << "Количество комнат: " << komnats << endl;
+        cout << "Адрес: " << adres << endl;
+    }
+};
+
+class chelovek {
+private:
+    string name;
+    int age;
+
+public:
+    chelovek(string n, int a) : name(n), age(a) {}
+
+    void Info() {
+        cout << "Имя: " << name << endl;
+        cout << "Возраст: " << age << endl;
+    }
+};
+
+
+class djitel : public chelovek {
+private:
+    dom* djiteli;
+
+public:
+    djitel(string n, int a) : chelovek(n, a) {}
+
+    void sdjitelei (dom * dom) {
+        djiteli = dom;
+    }
+
+    void Info() {
+        chelovek::Info();
+        
+        if (djiteli != 0) {
+            cout << "Место жительства: " << djiteli << endl;
+            djiteli->Info();
+        } else {
+            cout << "Место жительства не указано." << endl;
+        }
+    }
+};
+
+int main() {
+    dom dom(2, "ул. Школьная, д. 10");
+    djitel djitel("Сташевич Герман", 18);
+
+    djitel.sdjitelei(&dom);
+    djitel.Info();
+
+    return 0;
+}

@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Transport {
+protected:
+    int speed;
+    string tip;
+
+public:
+    Transport(int sp, string tp) : speed(sp), tip(tp) {}
+
+    void Info() {
+        cout << "Тип: " << tip << endl;
+        cout << "Скорость: " << speed << " км/ч" << endl;
+    }
+};
+
+class Avto : public Transport {
+private:
+    int dvigatel;
+
+public:
+    Avto(int sp, string tp, int dv) : Transport(sp, tp), dvigatel(dv) {}
+
+    void Info() {
+        Transport::Info(); 
+        cout << "Мощность двигателя в лошадинных силах: " << dvigatel << endl;
+    }
+};
+
+class Velik : public Transport {
+private:
+    int skorosti;
+
+public:
+    Velik(int sp, string tp, int sk) : Transport(sp, tp), skorosti(sk) {}
+
+    void Info() {
+        Transport::Info();
+        cout << "Количество cкоростей: " << skorosti << endl;
+    }
+};
+
+int main() {
+    Avto avto(280, "Автомобиль", 630);
+    Velik velik(35, "Велосипед", 21);
+
+    cout << "Информация об автомобиле:\n";
+    avto.Info();
+
+    cout << "\nИнформация о велосипеде:\n";
+    velik.Info();
+
+    return 0;
+}

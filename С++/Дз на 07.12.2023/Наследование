@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+class figura {
+public:
+    virtual double calculateArea() = 0;
+};
+
+class pramoygolnik : public figura {
+private:
+    double width;
+    double height;
+
+public:
+    pramoygolnik(double width, double height) {
+        this->width = width;
+        this->height = height;
+    }
+
+    double calculateArea() {
+        return width * height;
+    }
+};
+
+class krug : public figura {
+private:
+    double radius;
+
+public:
+    krug(double radius) {
+        this->radius = radius;
+    }
+
+    double calculateArea() {
+        return 3.14*(radius*radius);
+    }
+};
+
+int main() {
+    pramoygolnik pramoygolnik(8, 20);
+    krug krug(5);
+
+    cout << "Площадь прямоугольника: " << pramoygolnik.calculateArea() << "\n";
+
+    cout << "Площадь круга: " <<krug.calculateArea() << "\n";
+
+    return 0;
+}

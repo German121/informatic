@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    double balance;
+    string accountNumber;
+
+public:
+    BankAccount(string accountNumber) {
+        this->accountNumber = accountNumber;
+        balance = 0.0;
+    }
+
+    double getBalance() {
+        return balance;
+    }
+
+    void popolnenie(double kolichestvo) {
+        if (kolichestvo > 0) {
+            balance += kolichestvo;
+            cout << "Счет пополнен на " << kolichestvo << " рублей\n";
+        } else {
+            cout << "Некорректная сумма пополнения\n";
+        }
+    }
+
+    void snyatie(double kolichestvo) {
+        if (kolichestvo > 0 && kolichestvo <= balance) {
+            balance -= kolichestvo;
+            cout << "Со счета снято " << kolichestvo << " рублей\n";
+        } else {
+            cout << "Некорректная сумма снятия или недостаточно средств на счете\n";
+        }
+    }
+};
+
+int main() {
+    BankAccount account("1234567890");
+
+    account.popolnenie(777.0);
+    
+    account.snyatie(407.0);
+
+    cout << "Баланс счета: " << account.getBalance() << " рублей\n";
+
+    return 0;
+}
